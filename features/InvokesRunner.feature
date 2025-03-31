@@ -4,7 +4,7 @@ Feature: Invokes Runner
   So that I can quickly test my changes
 
   Scenario: Uses rake when Rakefile present
-    Given a file named "Rakefile"
+    Given an empty file named "Rakefile"
     And a file "Gemfile" does not exist
     And an empty file "features/test.feature"
     When I invoke feature-verify-all-scenarios-in-buffer on "features/test.feature"
@@ -16,7 +16,7 @@ Feature: Invokes Runner
   Scenario: Uses cucumber when no Rakefile present
     Given a file "Rakefile" does not exist
     And a file "Gemfile" does not exist
-    And a file named "features/test.feature"
+    And an empty file named "features/test.feature"
     When I invoke feature-verify-all-scenarios-in-buffer on "features/test.feature"
     Then the output should match:
       """
@@ -25,8 +25,8 @@ Feature: Invokes Runner
 
   Scenario: Uses bundler exec cucumber when Gemfile present but no Rakefile
     Given a file "Rakefile" does not exist
-    And a file named "Gemfile"
-    And a file named "features/test.feature"
+    And an empty file named "Gemfile"
+    And an empty file named "features/test.feature"
     When I invoke feature-verify-all-scenarios-in-buffer on "features/test.feature"
     Then the output should match:
       """
@@ -34,9 +34,9 @@ Feature: Invokes Runner
       """
 
   Scenario: Uses bundler exec rake when Gemfile and Rakefile present
-    Given a file named "Rakefile"
-    And a file named "Gemfile"
-    And a file named "features/test.feature"
+    Given an empty file named "Rakefile"
+    And an empty file named "Gemfile"
+    And an empty file named "features/test.feature"
     When I invoke feature-verify-all-scenarios-in-buffer on "features/test.feature"
     Then the output should match:
       """
@@ -44,45 +44,45 @@ Feature: Invokes Runner
       """
 
   Scenario: Uses docker-compose with rake when docker-compose.yml and Rakefile present
-    Given a file named "Rakefile"
-    Given a file named "docker-compose.yml"
+    Given an empty file named "Rakefile"
+    Given an empty file named "docker-compose.yml"
     And a file "Gemfile" does not exist
-    And a file named "features/test.feature"
+    And an empty file named "features/test.feature"
     When I invoke feature-verify-all-scenarios-in-buffer on "features/test.feature"
     Then the output should match:
       """
-      ^docker-compose run app rake cucumber CUCUMBER_OPTS="" FEATURE="features/test.feature"
+      ^docker compose run app rake cucumber CUCUMBER_OPTS="" FEATURE="features/test.feature"
       """
 
   Scenario: Uses docker-compose when docker-compose.yml present but no Gemfile
     Given a file "Rakefile" does not exist
     And a file "Gemfile" does not exist
-    And a file named "docker-compose.yml"
-    And a file named "features/test.feature"
+    And an empty file named "docker-compose.yml"
+    And an empty file named "features/test.feature"
     When I invoke feature-verify-all-scenarios-in-buffer on "features/test.feature"
     Then the output should match:
       """
-      ^docker-compose run app cucumber\s*\"features/test.feature\"
+      ^docker compose run app cucumber\s*\"features/test.feature\"
       """
 
   Scenario: Uses docker-compose with bundler exec cucumber when Gemfile and docker-compose.yml present but no Rakefile
     Given a file "Rakefile" does not exist
-    And a file named "Gemfile"
-    And a file named "docker-compose.yml"
-    And a file named "features/test.feature"
+    And an empty file named "Gemfile"
+    And an empty file named "docker-compose.yml"
+    And an empty file named "features/test.feature"
     When I invoke feature-verify-all-scenarios-in-buffer on "features/test.feature"
     Then the output should match:
       """
-      ^docker-compose run app bundle exec cucumber\s*\"features/test.feature\"
+      ^docker compose run app bundle exec cucumber\s*\"features/test.feature\"
       """
 
   Scenario: Uses docker-compose with bundler exec rake when Gemfile and docker-compose.yml and Rakefile present
-    Given a file named "Rakefile"
-    And a file named "Gemfile"
-    And a file named "docker-compose.yml"
-    And a file named "features/test.feature"
+    Given an empty file "Rakefile"
+    And an empty file named "Gemfile"
+    And an empty file named "docker-compose.yml"
+    And an empty file named "features/test.feature"
     When I invoke feature-verify-all-scenarios-in-buffer on "features/test.feature"
     Then the output should match:
       """
-      ^docker-compose run app bundle exec rake cucumber CUCUMBER_OPTS="" FEATURE="features/test.feature"
+      ^docker compose run app bundle exec rake cucumber CUCUMBER_OPTS="" FEATURE="features/test.feature"
       """

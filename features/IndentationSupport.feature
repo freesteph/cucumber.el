@@ -2,7 +2,8 @@ Feature: Indentation support
   As an emacs user
   I need a feature mode that properly indents Gherkin
   So that I can more easily write feature files
-  
+
+  @wip
   Scenario: Indents tables
     Given a file "tables.feature" with:
       """
@@ -22,7 +23,7 @@ Feature: Indentation support
       | foo    | bar    |
       | baz    | bat    |
       """
-    When I invoke "(indent-region (point-min) (point-max))" on "tables.features"
+    When I run `emacs --batch -l org -l org-table -l ../../feature-mode.el tables.feature --eval "(progn (feature-mode) (indent-region (point-min) (point-max) nil) (princ (buffer-string)))"`
     Then the output should contain:
       """
       Feature:
