@@ -1,6 +1,13 @@
 Emacs Feature Mode Change Log
 =============================
 
+Version 0.6.2 <2025-04-01 Tue>
+-----------------------------
+
+* Try and address most linting issues.
+* Restore some specs.
+* The repo has been transferred to freesteph/cucumber.el.
+
 Version 0.6.1 <2025-03-28 Fri>
 -----------------------------
 
