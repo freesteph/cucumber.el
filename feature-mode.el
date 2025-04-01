@@ -183,12 +183,8 @@ The line is back-dented by `feature-indent-offset' spaces."
   (or (boundp 'font-lock-variable-name-face)
       (setq font-lock-variable-name-face font-lock-type-face)))
 
-;; FIXME: this needs the `examples' (Examples) keyword before
-;; `scenario' (Scenario/Example) because they both match "Example" but
-;; if `scenario' is first then it is picked up, whereas we want the
-;; greedier "Examples" to win but I haven't figured out how yet.
 (defconst feature-mode--keywords
-  '(feature background examples scenario scenario_outline given when then but and rule))
+  '(feature background scenario scenario_outline given when then but and rule examples))
 
 (defvar feature-default-language "en")
 (defvar feature-default-directory "features")
@@ -313,7 +309,8 @@ The line is back-dented by `feature-indent-offset' spaces."
   (eval `(rx line-start
              (zero-or-more blank)
              (group (or ,@keywords))
-             (optional ":"))))
+             (optional ":")
+             word-boundary)))
 
 (defun feature--translated-keywords-for (keyword language)
   "Return the translated keywords for KEYWORD in the specified LANGUAGE."
