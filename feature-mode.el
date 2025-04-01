@@ -601,7 +601,8 @@ font lock table with LANGUAGE."
     (setq font-lock-defaults (list
                               (append
                                feature-mode--fontlock-static
-                               (feature-mode--fontlock-regexps language))))))
+                               (feature-mode--fontlock-regexps language))))
+    (font-lock-refresh-defaults)))
 
 ;;
 ;; Mode function
