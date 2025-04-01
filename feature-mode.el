@@ -183,8 +183,12 @@ The line is back-dented by `feature-indent-offset' spaces."
   (or (boundp 'font-lock-variable-name-face)
       (setq font-lock-variable-name-face font-lock-type-face)))
 
+;; FIXME: this needs the `examples' (Examples) keyword before
+;; `scenario' (Scenario/Example) because they both match "Example" but
+;; if `scenario' is first then it is picked up, whereas we want the
+;; greedier "Examples" to win but I haven't figured out how yet.
 (defconst feature-mode--keywords
-  '(feature background scenario scenario_outline given when then but and examples rule))
+  '(feature background examples scenario scenario_outline given when then but and rule))
 
 (defvar feature-default-language "en")
 (defvar feature-default-directory "features")
