@@ -3,7 +3,6 @@ Feature: Indentation support
   I need a feature mode that properly indents Gherkin
   So that I can more easily write feature files
 
-  @wip
   Scenario: Indents tables
     Given a file "tables.feature" with:
       """
