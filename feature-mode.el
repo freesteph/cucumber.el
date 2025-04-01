@@ -575,7 +575,7 @@ back-dent the line by `feature-indent-offset' spaces.  On reaching column
   "Enable/disable all minor modes for feature mode."
   (turn-on-orgtbl)
   (set (make-local-variable 'electric-indent-functions)
-       (list (lambda () 'no-indent))))
+       (list (lambda (_arg) 'no-indent))))
 
 (defun feature-mode--fontlock-for-keyword (keyword language)
   "Form the font lock structure to highlight KEYWORD in LANGUAGE."
