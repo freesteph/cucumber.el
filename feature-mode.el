@@ -311,8 +311,8 @@ The line is back-dented by `feature-indent-offset' spaces."
 (defun feature-build-keywords-re (keywords)
   "Builds the regex to match KEYWORDS."
   (eval `(rx line-start
-             (zero-or-more space)
-             (or ,@keywords)
+             (zero-or-more blank)
+             (group (or ,@keywords))
              (optional ":"))))
 
 (defun feature--translated-keywords-for (keyword language)
