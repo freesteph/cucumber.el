@@ -80,7 +80,7 @@ GEM
     stringio (3.1.6)
     sys-uname (1.3.1)
       ffi (~> 1.1)
-    thor (1.3.2)
+    thor (1.4.0)
 
 PLATFORMS
   aarch64-linux-gnu
