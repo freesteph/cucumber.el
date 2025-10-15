@@ -96,6 +96,8 @@
 (require 'xref)
 (require 'rx)
 
+(autoload 'turn-on-orgtbl "org-table" nil t)
+
 (defcustom feature-cucumber-command "cucumber {options} \"{feature}\""
   "Command used to run cucumber when there is no Rakefile."
   :group 'feature-mode
