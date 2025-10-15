@@ -96,6 +96,8 @@
 (require 'xref)
 (require 'rx)
 
+(autoload 'turn-on-orgtbl "org-table" nil t)
+
 (defcustom feature-cucumber-command "cucumber {options} \"{feature}\""
   "Command used to run cucumber when there is no Rakefile."
   :group 'feature-mode
@@ -643,7 +645,7 @@ are loaded on startup.  If nil, don't load snippets.")
    The support folder contains a ruby script that takes a step as an
    argument, and outputs a list of all matching step definitions")
 
-(declare-function yas/load-directory "yasnippet" t)
+(declare-function yas-load-directory "ext:yasnippet.el" t)
 (when (and (featurep 'yasnippet)
            feature-snippet-directory
            (file-exists-p feature-snippet-directory))
